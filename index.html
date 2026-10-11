@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b12">
+  <title>CubeX — 3D Rubik's Cube</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">CUBE<span>X</span></a>
+    <span class="live-status"><i></i> 3D INTERACTIVE</span>
+  </header>
+
+  <main class="app">
+    <section class="intro">
+      <p class="eyebrow">VIRTUAL PUZZLE LAB</p>
+      <h1>Master the <span>Cube.</span></h1>
+      <p class="subtitle">Turn faces, scramble the puzzle, and practice your solving moves.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="cube-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="section-label">3D VIEWPORT</span>
+            <h2>Your Cube</h2>
+          </div>
+          <span id="cube-status" class="status-pill">Solved</span>
+        </div>
+
+        <div id="cube-container">
+          <div class="viewport-hint">Drag to rotate view · Swipe a face to turn</div>
+          <div id="loading">Loading 3D cube...</div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-label">MOVES</span>
+            <strong id="move-count">0</strong>
+          </div>
+          <div class="stat">
+            <span class="stat-label">TIME</span>
+            <strong id="timer">00:00</strong>
+          </div>
+          <div class="stat">
+            <span class="stat-label">PROGRESS</span>
+            <strong id="progress">100%</strong>
+          </div>
+        </div>
+      </div>
+
+      <aside class="controls-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="section-label">CONTROL CENTER</span>
+            <h2>Make a Move</h2>
+          </div>
+        </div>
+
+        <p class="helper">Tap a move to turn that face. Add modifiers for prime or double turns.</p>
+
+        <div class="modifier-row">
+          <button id="inverse-toggle" class="modifier" aria-pressed="false">Prime (′)</button>
+          <button id="double-toggle" class="modifier" aria-pressed="false">Double (2)</button>
+        </div>
+
+        <div class="move-grid">
+          <button class="move-button" data-move="U"><strong>U</strong><small>Up</small></button>
+          <button class="move-button" data-move="D"><strong>D</strong><small>Down</small></button>
+          <button class="move-button" data-move="L"><strong>L</strong><small>Left</small></button>
+          <button class="move-button" data-move="R"><strong>R</strong><small>Right</small></button>
+          <button class="move-button" data-move="F"><strong>F</strong><small>Front</small></button>
+          <button class="move-button" data-move="B"><strong>B</strong><small>Back</small></button>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="action-grid">
+          <button id="scramble" class="action-button secondary">⤨ Scramble</button>
+          <button id="solve" class="action-button primary">✓ Solve Cube</button>
+          <button id="reset" class="action-button secondary">↻ Reset</button>
+        </div>
+
+        <div class="history-heading">
+          <h3>Move History</h3>
+          <button id="clear-history" class="text-button">Clear</button>
+        </div>
+        <div id="history" class="history-list">No moves yet</div>
+      </aside>
+    </section>
+
+    <section class="guide">
+      <h2>How to use CubeX</h2>
+      <div class="guide-grid">
+        <article><span>01</span><h3>Rotate the view</h3><p>Drag on the background to inspect the cube from different angles.</p></article>
+        <article><span>02</span><h3>Turn a face</h3><p>Swipe on a visible face, or use the six move buttons for precise turns.</p></article>
+        <article><span>03</span><h3>Practice</h3><p>Scramble the cube, practice your sequence, and use Solve to undo tracked moves.</p></article>
+      </div>
+      <p class="notation-note">Notation: U = Up, D = Down, L = Left, R = Right, F = Front, B = Back. A prime (′) reverses a turn; 2 means a half-turn.</p>
+    </section>
+  </main>
+
+  <footer>CubeX · Interactive 3D puzzle</footer>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
